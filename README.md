@@ -36,14 +36,20 @@ This will refresh the Electron window instantly.
 ## Folder Structure
 ```
 📂 electron-react-ts-tailwind-template
-├── 📁 src          # React + Tailwind source code
-│   ├── 📄 App.tsx  # Main React component
-│   ├── 📄 index.tsx  # Entry point for React
-├── 📁 electron     # Electron main process
-│   ├── 📄 main.ts  # Electron entry point
-├── 📁 public       # Static assets
-├── 📄 package.json # Dependencies & scripts
-├── 📄 webpack.config.js # Webpack configuration
+├── 📁 src             # Source code
+│   ├── 📁 electron    # Electron main process
+│   │   ├── 📄 index.ts # Electron entry point
+│   ├── 📁 website     # React frontend
+│   │   ├── 📄 App.tsx  # Main React component
+│   │   ├── 📄 index.tsx # React entry point
+│   │   ├── 📄 index.html # HTML template
+│   │   ├── 📄 app.css   # Tailwind styles
+├── 📄 package.json     # Dependencies & scripts
+├── 📄 tailwind.config.js # Tailwind configuration
+├── 📄 tsconfig.json    # TypeScript configuration
+├── 📄 postcss.config.js # PostCSS configuration
+├── 📄 webpack.electron.config.js # Webpack config for Electron
+├── 📄 webpack.website.config.js  # Webpack config for React website
 ```
 
 ## Build for Production
@@ -56,6 +62,7 @@ npm run build
 - The default Electron menu is hidden for a cleaner interface.
 - Hot reloading ensures faster development without restarting Electron.
 - Tailwind CSS is preconfigured for rapid styling.
+- Webpack configurations are separate for **Electron** and **React website**.
 
 ---
 
