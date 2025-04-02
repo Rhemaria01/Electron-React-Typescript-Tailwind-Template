@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require("electron");
+const path = require("path");
 
-app.on("ready", () => {
-  // once electron has started up, create a window.
+const createWindow = () => {
   const window = new BrowserWindow({
     width: 800,
     height: 600,
@@ -10,9 +10,21 @@ app.on("ready", () => {
     },
   });
 
-  // hide the default menu bar that comes with the browser window
-  window.setMenuBarVisibility(null);
+  // Hide default menu bar
+  window.setMenuBarVisibility(false);
 
-  // load a website to display
-  window.loadURL(`file://${__dirname}/../website/index.html`);
+  // Load the React website
+  const startURL = `file://${path.join(__dirname, "../website/index.html")}`;
+
+  window.loadURL(startURL);
+};
+
+app.whenReady().then(createWindow);
+
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") app.quit();
+});
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
